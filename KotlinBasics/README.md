@@ -1,0 +1,18 @@
+# Kotlin basics
+
+Basics of Kotlin language
+
+## Examples
+1. 
+
+## Build and run
+
+```
+mvn clean install
+
+java -jar <target-location>/basics-jar-with-dependencies.jar arg
+```
+
+## Notes
+
+- Arguments are in ()
