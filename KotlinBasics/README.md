@@ -6,7 +6,7 @@ Basics of Kotlin language
 1. Hello World (hw) - Another Hello World.
 2. Max (max) - Simple function counting max value.
 3. Class (cl) - Basic class usage.
-
+4. Ranges (rn) - Iterate over range.
 
 ## Build and run
 

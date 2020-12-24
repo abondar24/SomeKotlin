@@ -32,6 +32,19 @@ fun main(args: Array<String>) {
                 println(cl is Human)
             }
 
+            Args.RN.nm -> {
+                val range = 1..10
+                for (i in range){
+                    println("Range: $i")
+                }
+
+                for (i in 20 downTo 2 step 2){
+                    println(i)
+                }
+
+                println(17 in range)
+            }
+
         }
 
     }
