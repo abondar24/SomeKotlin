@@ -5,6 +5,8 @@ Basics of Kotlin language
 ## Examples
 1. Hello World (hw) - Another Hello World.
 2. Max (max) - Simple function counting max value.
+3. Class (cl) - Basic class usage.
+
 
 ## Build and run
 
