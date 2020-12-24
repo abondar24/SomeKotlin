@@ -43,6 +43,9 @@ fun main(args: Array<String>) {
                 }
 
                 println(17 in range)
+                println("Kotlin" in "Java".."Scala")
+                println("Kotlin" in setOf("Java","Scala"))
+
             }
 
         }
