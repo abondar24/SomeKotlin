@@ -20,5 +20,15 @@ fun max(a: Int, b: Int): Int {
 }
 
 
+fun parsePath(path: String){
+  val regex = """(.+)/(.+)\.(.+)""".toRegex()
+  val match = regex.matchEntire(path)
+
+  if (match!=null){
+      val (dir,file,ext) = match.destructured
+      println("Dir: $dir, File: $file, Ext: $ext")
+  }
+}
+
 fun String.lastChar(): Char = get(this.length-1)
 val String.lastToLast: Char get() = get(this.length-2)

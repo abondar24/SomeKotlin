@@ -1,9 +1,11 @@
 package basics
 
 
+
 import util.max as mx
 import util.lastChar
 import util.lastToLast
+import util.parsePath
 
 fun main(args: Array<String>) {
 
@@ -30,6 +32,7 @@ fun main(args: Array<String>) {
                 println(cl.age)
                 println("Old: ${cl.isOld}")
                 println(cl is Human)
+                cl.validate(cl,7)
             }
 
             Args.RN.nm -> {
@@ -69,6 +72,15 @@ fun main(args: Array<String>) {
             Args.EF.nm -> {
                 println("Last char of Kotlin is ${"Kotlin".lastChar()}")
                 println("Last before last of Kotlin is ${"Kotlin".lastToLast}")
+            }
+
+            Args.RE.nm -> {
+                println("192.168.1.1".split("\\.".toRegex()))
+
+                val path = "/home/abondar/demo.tf"
+                println("Path: $path")
+                parsePath(path)
+
             }
 
         }
