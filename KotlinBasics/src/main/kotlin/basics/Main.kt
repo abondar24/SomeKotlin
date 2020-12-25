@@ -1,5 +1,7 @@
 package basics
 
+import java.lang.StringBuilder
+
 
 fun main(args: Array<String>) {
 
@@ -13,10 +15,6 @@ fun main(args: Array<String>) {
             }
 
             Args.MAX.nm -> {
-                fun max(a: Int, b: Int): Int {
-                    return if (a > b) a else b
-                }
-
                 val maxVal = max(7, 10)
                 println("Max of 7 and 10 is $maxVal")
 
@@ -49,7 +47,7 @@ fun main(args: Array<String>) {
             }
 
             Args.COL.nm ->{
-                val st = hashSetOf(1,2,5,6)
+                val st = hashSetOf(1,2,15,6)
                 println("Hash Set $st")
                 println("Max in set is ${st.max()}")
 
@@ -57,8 +55,12 @@ fun main(args: Array<String>) {
                 println("Array list $lst")
                 println("Last in array list is ${lst.last()}")
 
+
+                println("Join to string ${joinToString(lst,prefix = "{",postfix = "}")}")
+
                 val mp = hashMapOf("One" to 1,"two" to 2)
                 println("Hash map $mp")
+
 
             }
 
