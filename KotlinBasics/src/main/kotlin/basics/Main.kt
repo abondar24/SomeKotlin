@@ -48,6 +48,20 @@ fun main(args: Array<String>) {
 
             }
 
+            Args.COL.nm ->{
+                val st = hashSetOf(1,2,5,6)
+                println("Hash Set $st")
+                println("Max in set is ${st.max()}")
+
+                val lst = arrayListOf(1,2,5,6)
+                println("Array list $lst")
+                println("Last in array list is ${lst.last()}")
+
+                val mp = hashMapOf("One" to 1,"two" to 2)
+                println("Hash map $mp")
+
+            }
+
         }
 
     }
