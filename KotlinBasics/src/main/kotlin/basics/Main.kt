@@ -1,7 +1,9 @@
 package basics
 
-import java.lang.StringBuilder
 
+import util.max as mx
+import util.lastChar
+import util.lastToLast
 
 fun main(args: Array<String>) {
 
@@ -15,7 +17,7 @@ fun main(args: Array<String>) {
             }
 
             Args.MAX.nm -> {
-                val maxVal = max(7, 10)
+                val maxVal = mx(7, 10)
                 println("Max of 7 and 10 is $maxVal")
 
 
@@ -56,12 +58,17 @@ fun main(args: Array<String>) {
                 println("Last in array list is ${lst.last()}")
 
 
-                println("Join to string ${joinToString(lst,prefix = "{",postfix = "}")}")
+                println("Join to string ${lst.joinToString(prefix = "{",postfix = "}")}")
 
                 val mp = hashMapOf("One" to 1,"two" to 2)
                 println("Hash map $mp")
 
 
+            }
+
+            Args.EF.nm -> {
+                println("Last char of Kotlin is ${"Kotlin".lastChar()}")
+                println("Last before last of Kotlin is ${"Kotlin".lastToLast}")
             }
 
         }

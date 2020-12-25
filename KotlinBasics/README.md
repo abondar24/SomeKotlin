@@ -7,7 +7,8 @@ Basics of Kotlin language
 2. Max (max) - Simple function counting max value.
 3. Class (cl) - Basic class usage.
 4. Ranges (rn) - Iterate over range.
-5. Collections (col) - Collection creation
+5. Collections (col) - Collection creation.
+6. Extension function (ef) - Creation and usage of extension functions.
 
 ## Build and run
 
