@@ -26,13 +26,32 @@ fun main(args: Array<String>) {
             }
 
             Args.CL.nm -> {
-                val cl = Person("Alex", 0)
-                cl.age = 21
-                println(cl.name)
-                println(cl.age)
-                println("Old: ${cl.isOld}")
-                println(cl is Human)
-                cl.validate(cl,7)
+                val emp = Employee("Alex")
+                emp.age = 21
+                println(emp.name)
+                println(emp.age)
+                println("Old: ${emp.isOld}")
+                println(emp is Human)
+                emp.validate(emp,7)
+
+                emp.talk()
+                emp.walk()
+                emp.breathe()
+
+
+                val intern = Intern("Rajesh", 20)
+                val work = Work(intern)
+                work.doWork()
+
+                val work1 = Work(emp)
+                work1.doWork()
+
+                val cj = Job.ComplexJob()
+                cj.doJob()
+
+                val per = Person("Donald","Duck")
+                println(per.toString())
+                println(per.hashCode())
             }
 
             Args.RN.nm -> {
