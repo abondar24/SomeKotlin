@@ -9,6 +9,7 @@ Basics of Kotlin language
 4. Ranges (rn) - Iterate over range.
 5. Collections (col) - Collection creation.
 6. Extension function (ef) - Creation and usage of extension functions.
+7. Lambdas (lm) - Various lambda usage examples.
 
 ## Build and run
 

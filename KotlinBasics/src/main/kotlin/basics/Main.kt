@@ -2,10 +2,9 @@ package basics
 
 
 
+import util.*
+import kotlin.collections.joinToString
 import util.max as mx
-import util.lastChar
-import util.lastToLast
-import util.parsePath
 
 fun main(args: Array<String>) {
 
@@ -100,6 +99,22 @@ fun main(args: Array<String>) {
                 println("Path: $path")
                 parsePath(path)
 
+            }
+
+            Args.LM.nm -> {
+                val interns = listOf(Intern("Arsen",19),
+                    Intern("Suren",18),
+                    Intern("Ali",20))
+
+                println(interns.maxOf { it.age })
+                println(interns.filter { it.name=="Arsen" })
+                println(interns.map (Intern::name))
+
+                val mult = {x: Int , y: Int -> x*y}
+                println(mult(21,11))
+
+                println(alphabet())
+                println(reverseAlphabet())
             }
 
         }

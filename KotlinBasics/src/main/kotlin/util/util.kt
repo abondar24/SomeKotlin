@@ -32,3 +32,18 @@ fun parsePath(path: String){
 
 fun String.lastChar(): Char = get(this.length-1)
 val String.lastToLast: Char get() = get(this.length-2)
+
+fun alphabet() = with(StringBuilder()) {
+    for (letter in 'A'..'Z') {
+        append(letter)
+    }
+    toString()
+}
+
+fun reverseAlphabet() = StringBuilder().apply {
+    for (letter in 'Z'..'A') {
+        append(letter)
+    }
+
+}.toString()
+
