@@ -47,3 +47,17 @@ fun reverseAlphabet() = StringBuilder().apply {
 
 }.toString()
 
+
+fun strUpper( s:String?): String{
+    return s?.toUpperCase() ?: ""
+}
+
+fun strLen(s:String?): Int{
+    val nonNull = s!!
+
+    return nonNull.length
+}
+
+
+fun String?.isNullOrBlank(): Boolean = this==null || this.isBlank()
+

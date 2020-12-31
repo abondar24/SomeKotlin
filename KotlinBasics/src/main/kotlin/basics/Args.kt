@@ -6,6 +6,7 @@ enum class Args (val nm:String){
     EF("ef"),
     HW("hw"),
     LM("lm"),
+    NULL("null"),
     MAX("max"),
     RE("re"),
     RN("rn"),

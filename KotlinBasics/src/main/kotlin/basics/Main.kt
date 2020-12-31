@@ -117,6 +117,24 @@ fun main(args: Array<String>) {
                 println(reverseAlphabet())
             }
 
+            Args.NULL.nm ->{
+                println(strUpper("test"))
+                println(strUpper(null))
+
+                println(strLen("str"))
+               // println(strLen(null))
+
+                var s : String ? = "something"
+                s?.let { println(it) }
+
+                s = null
+                s?.let { println("null") }
+
+                println("string".isNullOrBlank())
+                println("".isNullOrBlank())
+                println(s.isNullOrBlank())
+            }
+
         }
 
     }
