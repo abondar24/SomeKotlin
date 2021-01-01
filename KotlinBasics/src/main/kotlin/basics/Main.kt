@@ -135,6 +135,18 @@ fun main(args: Array<String>) {
                 println(s.isNullOrBlank())
             }
 
+            Args.OV.nm ->{
+                val a = Math(1)
+
+                var b = a+1;
+                println(b.value)
+                b +=2
+                println(b.value)
+
+                val c= ++b
+                println(c.value)
+            }
+
         }
 
     }

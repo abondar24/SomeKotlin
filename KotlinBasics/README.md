@@ -10,7 +10,8 @@ Basics of Kotlin language
 5. Collections (col) - Collection creation.
 6. Extension function (ef) - Creation and usage of extension functions.
 7. Lambdas (lm) - Various lambda usage examples.
-8. NULL (null) - null checks
+8. NULL (null) - NULL checks and nullable types.
+9. Overloading (ov) - Operator overloading.
 
 ## Build and run
 
