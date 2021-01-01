@@ -1,19 +1,21 @@
 package basics
 
-open class Employee : Human,Animal{
+import kotlin.properties.Delegates
+import kotlin.reflect.KProperty
 
-    val name: String
+open class Employee(name: String, age: Int) : Human,Animal, PropertyChangeAware() {
 
-    var age: Int
-
-    constructor(name: String){
-        this.name =name
-        this.age =0
+    private val observer = {
+        prop: KProperty<*>,oldVal: Int,newVal: Int -> changeSupport.firePropertyChange(prop.name,oldVal,newVal)
     }
 
-    constructor(name: String, age: Int){
+    var name: String  by NameProperty(name,changeSupport)
+
+    var age: Int by Delegates.observable(age,observer)
+
+
+    constructor(name: String) : this(name,0) {
         this.name = name
-        this.age = age
     }
 
 

@@ -26,7 +26,7 @@ fun main(args: Array<String>) {
 
             Args.CL.nm -> {
                 val emp = Employee("Alex")
-                emp.age = 21
+                emp.age=21
                 println(emp.name)
                 println(emp.age)
                 println("Old: ${emp.isOld}")
@@ -36,6 +36,8 @@ fun main(args: Array<String>) {
                 emp.talk()
                 emp.walk()
                 emp.breathe()
+                emp.name="Ronald"
+                emp.age=31
 
 
                 val intern = Intern("Rajesh", 20)
