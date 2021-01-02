@@ -149,6 +149,22 @@ fun main(args: Array<String>) {
                 println(c.value)
             }
 
+            Args.HOF.nm ->{
+                val mult: (Int,Int) -> Int = {a,b -> a*b}
+                println(mult(4,7))
+
+                fiveAndSix(mult)
+
+
+                val filtered = "test string".filter { it in 'a'..'z' }
+                println(filtered)
+
+                val lst = arrayListOf("Lobio","Horovatz","Olivie")
+                println("Join to string ${lst.joinToString{it.toUpperCase()}}")
+
+                println(doubleFunction("I like to eat"))
+            }
+
         }
 
     }

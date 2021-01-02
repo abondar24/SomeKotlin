@@ -12,6 +12,8 @@ Basics of Kotlin language
 7. Lambdas (lm) - Various lambda usage examples.
 8. NULL (null) - NULL checks and nullable types.
 9. Overloading (ov) - Operator overloading.
+10. High-Order Functions(hof) - Usage of high order functions.
+
 
 ## Build and run
 

@@ -15,6 +15,21 @@ fun<T> Collection<T>.joinToString( separator: String = ":",
     return res.toString()
 }
 
+fun<T> Collection<T>.joinToString( separator: String = ":",
+                                prefix: String="", postfix:String="",
+                                tranfsorm: ((T) -> String)? = null ) : String{
+
+    val res = StringBuilder(prefix)
+    for ((index,elem) in withIndex()){
+        if (index>0) res.append(separator)
+        val str = tranfsorm?.invoke(elem) ?: elem.toString()
+        res.append(str)
+    }
+
+    res.append(postfix)
+    return res.toString()
+}
+
 fun max(a: Int, b: Int): Int {
     return if (a > b) a else b
 }
@@ -61,3 +76,23 @@ fun strLen(s:String?): Int{
 
 fun String?.isNullOrBlank(): Boolean = this==null || this.isBlank()
 
+fun fiveAndSix(operation: (Int,Int)->Int){
+    val res = operation(5,6)
+    println(res)
+}
+
+fun String.filter(predicate: (Char)->Boolean):String{
+   val sb = StringBuilder()
+   for (index in 0 until length){
+       val elem = get(index)
+       if (predicate(elem)) sb.append(elem)
+   }
+
+    return sb.toString()
+}
+
+fun doubleFunction(str: String): (String)-> String{
+    str.plus("sometest")
+
+    return {res -> str.toUpperCase(); }
+}
