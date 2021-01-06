@@ -3,6 +3,7 @@ package basics
 
 
 import util.*
+import java.lang.StringBuilder
 import kotlin.collections.joinToString
 import util.max as mx
 
@@ -163,6 +164,25 @@ fun main(args: Array<String>) {
                 println("Join to string ${lst.joinToString{it.toUpperCase()}}")
 
                 println(doubleFunction("I like to eat"))
+            }
+
+            Args.GEN.nm ->{
+                println(half(7))
+                println(min(7,3))
+                println(min("java", "kotlin"))
+
+                val sb = StringBuilder("I am Kotlin")
+                ensureTrailing(sb)
+                println(sb)
+
+                println(isA<String>("aaaa"))
+                println(isA<String>(7))
+
+                val src = mutableListOf(1,2,3,4,5)
+                val dst = mutableListOf<Any>()
+
+                copyData(src,dst)
+                println(dst)
             }
 
         }

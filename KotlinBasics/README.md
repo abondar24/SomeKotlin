@@ -13,7 +13,7 @@ Basics of Kotlin language
 8. NULL (null) - NULL checks and nullable types.
 9. Overloading (ov) - Operator overloading.
 10. High-Order Functions(hof) - Usage of high order functions.
-
+11. Generics (gen) - Basics of Generics.
 
 ## Build and run
 

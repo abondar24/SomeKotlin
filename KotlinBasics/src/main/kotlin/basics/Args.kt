@@ -4,6 +4,7 @@ enum class Args (val nm:String){
     CL("cl"),
     COL("col"),
     EF("ef"),
+    GEN("gen"),
     HOF("hof"),
     HW("hw"),
     LM("lm"),

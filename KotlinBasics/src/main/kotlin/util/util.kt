@@ -96,3 +96,26 @@ fun doubleFunction(str: String): (String)-> String{
 
     return {res -> str.toUpperCase(); }
 }
+
+fun <T :Number> half(value:T) : Double{
+    return value.toDouble() / 2.0
+}
+
+fun <T : Comparable<T>> min(first: T, second: T) : T {
+    return if (first<second) first else second
+}
+
+fun <T> ensureTrailing(seq :T)
+where T: CharSequence, T : Appendable {
+    if (!seq.endsWith('.')){
+        seq.append('.')
+    }
+}
+
+inline fun<reified T> isA(value: Any) = value is T
+
+fun <T: R,R> copyData(source : MutableList<T>,dest: MutableList<R>){
+    for (i in source){
+        dest.add(i)
+    }
+}
