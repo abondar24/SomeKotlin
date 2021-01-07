@@ -1,10 +1,23 @@
 package basics
 
-
-
-import util.*
+import util.alphabet
+import util.copyData
+import util.doubleFunction
+import util.ensureTrailing
+import util.fiveAndSix
+import util.half
+import util.isA
+import util.lastChar
+import util.lastToLast
+import util.min
+import util.parsePath
+import util.reverseAlphabet
+import util.strLen
+import util.strUpper
 import java.lang.StringBuilder
 import kotlin.collections.joinToString
+import kotlin.text.filter
+import kotlin.text.isNullOrBlank
 import util.max as mx
 
 fun main(args: Array<String>) {
@@ -183,6 +196,15 @@ fun main(args: Array<String>) {
 
                 copyData(src,dst)
                 println(dst)
+            }
+
+            Args.REF.nm ->{
+                val person = Person("test","test")
+                val kClass = person.javaClass.kotlin
+                println(kClass.simpleName)
+                kClass.members.forEach{ println(it.name)}
+
+
             }
 
         }
