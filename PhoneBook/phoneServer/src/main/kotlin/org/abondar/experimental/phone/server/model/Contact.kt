@@ -7,8 +7,8 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.ReferenceOption
 
 object Contacts : IntIdTable("ph_contact"){
-    var firstName = varchar("firstName",255)
-    var lastName = varchar("lastName",255)
+    var firstName = varchar("first_name",255)
+    var lastName = varchar("last_name",255)
     var phone = varchar("phone",255)
     var email = varchar("email",255)
     var userId = integer("user_id")
