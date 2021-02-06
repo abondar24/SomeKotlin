@@ -9,7 +9,7 @@ import io.ktor.routing.routing
 import io.ktor.util.KtorExperimentalAPI
 import org.abondar.experimental.phone.server.conf.initDB
 import org.abondar.experimental.phone.server.routes.apiRoute
-import org.abondar.experimental.phone.server.service.bindServices
+import org.abondar.experimental.phone.server.service.serviceDI
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.kodein.di.ktor.di
 
@@ -36,7 +36,7 @@ fun Application.module(testing: Boolean = false){
    }
 
    di {
-      bindServices()
+     serviceDI
     }
 
    routing {

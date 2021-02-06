@@ -16,13 +16,21 @@ import org.slf4j.LoggerFactory
 
 
 @KtorExperimentalAPI
-fun Application.initDB(){
+fun initDB() {
     val conf = HoconApplicationConfig(ConfigFactory.load())
 
     val dataSource = hikary(conf)
     Database.connect(dataSource)
     createTables()
     LoggerFactory.getLogger(Application::class.simpleName).info("Initialized Database")
+}
+
+
+fun initTestDB() {
+
+    Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "org.h2.Driver")
+    createTables()
+    LoggerFactory.getLogger(Application::class.simpleName).info("Initialized test Database")
 }
 
 

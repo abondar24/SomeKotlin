@@ -26,6 +26,9 @@ class UserEntity (id: EntityID<Int>): IntEntity(id){
 
 data class User(
     val id: Int,
-    val userName: String,
+    val username: String,
     val password: String
 )
+
+data class UserDto( val username: String,
+                    val password: String)

@@ -15,11 +15,13 @@
         <kotlin.version>1.4.21</kotlin.version>
         <ktor.version>1.5.1</ktor.version>
         <junit.version>5.7.0</junit.version>
-        <kodein.version>7.1.0</kodein.version>
+        <kodein.version>7.2.0</kodein.version>
         <exposed.version>0.29.1</exposed.version>
         <hikari.version>4.0.1</hikari.version>
         <log.version>1.2.3</log.version>
         <postgres.version>42.2.18</postgres.version>
+        <bcrypt.version>0.4</bcrypt.version>
+        <h2.version>1.4.196</h2.version>
         <mvn.report.version>2.22.2</mvn.report.version>
         <mvn.exec.version>1.6.0</mvn.exec.version>
         <mvn.jar.version>3.1.2</mvn.jar.version>
@@ -72,6 +74,11 @@
         </dependency>
         <dependency>
             <groupId>org.kodein.di</groupId>
+            <artifactId>kodein-di</artifactId>
+            <version>${kodein.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kodein.di</groupId>
             <artifactId>kodein-di-framework-ktor-server-jvm</artifactId>
             <version>${kodein.version}</version>
         </dependency>
@@ -102,10 +109,15 @@
             <version>${postgres.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>${bcrypt.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${log.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.ktor</groupId>
@@ -129,6 +141,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
