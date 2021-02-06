@@ -1,7 +1,6 @@
 package org.abondar.experimental.phone.server.org.abondar.experimental.phone.server.service
 
 import org.abondar.experimental.phone.server.model.User
-import org.abondar.experimental.phone.server.model.UserDto
 import org.abondar.experimental.phone.server.model.UserEntity
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.mindrot.jbcrypt.BCrypt
