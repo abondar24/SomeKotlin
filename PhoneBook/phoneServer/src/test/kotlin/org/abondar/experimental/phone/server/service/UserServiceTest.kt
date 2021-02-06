@@ -3,6 +3,7 @@ package org.abondar.experimental.phone.server.service
 
 import org.junit.jupiter.api.Test
 import org.abondar.experimental.phone.server.conf.initTestDB
+import org.abondar.experimental.phone.server.model.User
 import org.abondar.experimental.phone.server.model.UserDto
 import org.abondar.experimental.phone.server.org.abondar.experimental.phone.server.service.UserService
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
@@ -20,7 +21,7 @@ class UserServiceTest {
     @Test
     fun createUserTest(){
           initTestDB()
-          val user = UserDto("test","test");
+          val user = User(0,"test","test")
           val res = userService.createUser(user).toUser()
 
           assertTrue {res.id>0}
@@ -29,7 +30,7 @@ class UserServiceTest {
     @Test
     fun getUserByIdTest(){
         initTestDB()
-        val user = UserDto("test","test");
+        val user = User(0,"test","test")
         val usr = userService.createUser(user).toUser()
 
         val res = userService.getUserById(usr.id)
@@ -40,7 +41,7 @@ class UserServiceTest {
     @Test
     fun deleteTest(){
         initTestDB()
-        val user = UserDto("test","test");
+        val user = User(0,"test","test")
         var usr = userService.createUser(user).toUser()
         usr = userService.getUserById(usr.id)
 
