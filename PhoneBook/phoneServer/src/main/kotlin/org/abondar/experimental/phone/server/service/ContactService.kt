@@ -2,12 +2,8 @@ package org.abondar.experimental.phone.server.org.abondar.experimental.phone.ser
 
 import org.abondar.experimental.phone.server.model.Contact
 import org.abondar.experimental.phone.server.model.ContactEntity
-import org.abondar.experimental.phone.server.model.Contacts
 import org.abondar.experimental.phone.server.model.UserEntity
-
-
 import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.update
 
 class ContactService() {
 

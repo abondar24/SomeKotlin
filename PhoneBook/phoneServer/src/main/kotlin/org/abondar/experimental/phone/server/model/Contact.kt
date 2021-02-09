@@ -4,6 +4,7 @@ import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
+import org.jetbrains.exposed.sql.ReferenceOption
 
 
 object Contacts : IntIdTable("ph_contact"){
@@ -11,7 +12,7 @@ object Contacts : IntIdTable("ph_contact"){
     var lastName = varchar("last_name",255)
     var phone = varchar("phone",4096)
     var email = varchar("email",4096)
-    var user = reference("user",Users)
+    var user = reference("user",Users,onDelete = ReferenceOption.CASCADE)
 }
 
 class ContactEntity (id: EntityID<Int>): IntEntity(id){

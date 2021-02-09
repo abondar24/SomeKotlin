@@ -105,4 +105,19 @@ class ContactServiceTest {
 
         assertThrows<EntityNotFoundException> { contactService.getContactById(ct1.id) }
     }
+
+    @Test
+    fun deleteUserCascadeTest(){
+        initTestDB()
+        val user = User(0,"test","test")
+        val usr = userService.createUser(user).toUser()
+
+        val contact = Contact(0,"test","test","test","")
+        val ct = contactService.createContact(contact,usr.id).toContact()
+
+        userService.deleteUser(usr.id)
+        assertThrows<EntityNotFoundException> { userService.getUserById(usr.id) }
+        assertThrows<EntityNotFoundException> { contactService.getContactById(ct.id) }
+
+    }
 }
