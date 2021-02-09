@@ -8,6 +8,8 @@ import org.kodein.di.bind
 import org.kodein.di.instance
 import org.kodein.di.singleton
 
+
+
 val serviceDI = DI{
      bind<UserService>() with singleton { UserService() }
      bind<LoginService>() with singleton { LoginService(instance(UserService())) }
