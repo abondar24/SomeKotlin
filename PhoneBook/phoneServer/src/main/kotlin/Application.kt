@@ -13,6 +13,7 @@ import org.abondar.experimental.phone.server.routes.apiRoute
 import org.abondar.experimental.phone.server.service.serviceDI
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.kodein.di.ktor.di
+import java.lang.NumberFormatException
 import java.text.DateFormat
 
 
@@ -45,6 +46,14 @@ fun Application.appModule(testing: Boolean = false){
        }
 
        exception<NotFoundException>{
+           call.respond(HttpStatusCode.BadRequest)
+       }
+
+       exception<NumberFormatException>{
+           call.respond(HttpStatusCode.BadRequest)
+       }
+
+       exception<NullPointerException>{
            call.respond(HttpStatusCode.BadRequest)
        }
    }

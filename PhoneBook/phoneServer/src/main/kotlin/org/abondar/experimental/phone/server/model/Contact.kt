@@ -32,7 +32,6 @@ class ContactEntity (id: EntityID<Int>): IntEntity(id){
 
 data class Contact(
     val id: Int,
-
     val firstName: String,
     val lastName: String,
     val phone: String,

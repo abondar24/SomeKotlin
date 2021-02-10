@@ -5,7 +5,7 @@ import org.abondar.experimental.phone.server.model.ContactEntity
 import org.abondar.experimental.phone.server.model.UserEntity
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class ContactService() {
+class ContactService {
 
     fun createContact(contact: Contact,userId: Int) = transaction{
         ContactEntity.new {

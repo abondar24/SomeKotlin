@@ -12,6 +12,7 @@ import org.kodein.di.instance
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
+//TODO: refactor data generation
 class ContactServiceTest {
     private val contactService by serviceDI.instance<ContactService>()
     private val userService by serviceDI.instance<UserService>()
