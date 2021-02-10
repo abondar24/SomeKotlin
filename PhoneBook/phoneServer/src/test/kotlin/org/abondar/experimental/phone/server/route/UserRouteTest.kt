@@ -13,10 +13,8 @@ import org.abondar.experimental.phone.server.appModule
 
 
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-//TODO: refactor data generation
 class UserRouteTest {
 
     @KtorExperimentalAPI
@@ -36,7 +34,6 @@ class UserRouteTest {
         val status = call.response.status()?.value
         val resp = gson.fromJson(call.response.content,User::class.java)
 
-        assertTrue { call.requestHandled }
         assertEquals(201,status)
         assertEquals(user.username,resp.username)
 
@@ -49,16 +46,9 @@ class UserRouteTest {
     }) {
 
         val gson = Gson()
-        val user = User(0,"test","test")
-        val body =  gson.toJson(user)
-        var call= handleRequest(HttpMethod.Post, "/user") {
-            addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
-            setBody(body)
-        }
+        val id = createUser(gson)
 
-        val resp = gson.fromJson(call.response.content,User::class.java)
-
-        call= handleRequest(HttpMethod.Get, "/user/"+resp.id) {
+        val call= handleRequest(HttpMethod.Get, "/user/$id") {
             addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
         }
 
@@ -66,9 +56,8 @@ class UserRouteTest {
         val status = call.response.status()?.value
 
 
-        assertTrue { call.requestHandled }
         assertEquals(302,status)
-        assertEquals(resp.id,found.id)
+        assertEquals(id,found.id)
 
 
     }
@@ -79,13 +68,12 @@ class UserRouteTest {
         appModule(true)
     }) {
 
-        val call= handleRequest(HttpMethod.Get, "/user/7") {
+        val call= handleRequest(HttpMethod.Get, "/user/500") {
             addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
         }
 
         val status = call.response.status()?.value
 
-        assertFalse{ call.requestHandled }
         assertEquals(404,status)
 
     }
@@ -101,7 +89,6 @@ class UserRouteTest {
         }
 
         val status = call.response.status()?.value
-        assertTrue{ call.requestHandled }
         assertEquals(400,status)
 
     }
@@ -114,25 +101,34 @@ class UserRouteTest {
     }) {
 
         val gson = Gson()
-        val user = User(0,"test","test")
-        val body =  gson.toJson(user)
-        var call= handleRequest(HttpMethod.Post, "/user") {
-            addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
-            setBody(body)
-        }
+        val id = createUser(gson)
 
-        val resp = gson.fromJson(call.response.content,User::class.java)
-
-        call= handleRequest(HttpMethod.Delete, "/user/"+resp.id) {
+        val call= handleRequest(HttpMethod.Delete, "/user/$id") {
             addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
         }
 
         val status = call.response.status()?.value
 
 
-        assertTrue { call.requestHandled }
         assertEquals(200,status)
 
+    }
+
+
+    @KtorExperimentalAPI
+    private fun createUser(gson: Gson) = withTestApplication({
+        appModule(true)
+    }) {
+
+        val user = User(0,"test","test")
+        val body =  gson.toJson(user)
+        val call= handleRequest(HttpMethod.Post, "/user") {
+            addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+            setBody(body)
+        }
+
+        val resp = gson.fromJson(call.response.content,User::class.java)
+        resp.id
     }
 
 }

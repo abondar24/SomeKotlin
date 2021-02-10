@@ -9,8 +9,6 @@ import org.abondar.experimental.phone.server.model.Contact
 import org.abondar.experimental.phone.server.model.User
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 
 class ContactRouteTest {
 
@@ -33,7 +31,6 @@ class ContactRouteTest {
         val status = call.response.status()?.value
         val resp = gson.fromJson(call.response.content, Contact::class.java)
 
-        assertTrue { call.requestHandled }
         assertEquals(201,status)
         assertEquals(contact.firstName,resp.firstName)
 
@@ -56,7 +53,6 @@ class ContactRouteTest {
         val status = call.response.status()?.value
         val resp = gson.fromJson(call.response.content, Contact::class.java)
 
-        assertTrue { call.requestHandled }
         assertEquals(302,status)
         assertEquals(ctId,resp.id)
 
@@ -69,13 +65,12 @@ class ContactRouteTest {
         appModule(true)
     }) {
 
-        val call= handleRequest(HttpMethod.Get, "/contact/7") {
+        val call= handleRequest(HttpMethod.Get, "/contact/500") {
             addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
         }
 
         val status = call.response.status()?.value
 
-        assertFalse { call.requestHandled }
         assertEquals(404,status)
 
 
@@ -95,7 +90,6 @@ class ContactRouteTest {
 
         val status = call.response.status()?.value
 
-        assertTrue { call.requestHandled }
         assertEquals(400,status)
 
 
@@ -118,7 +112,6 @@ class ContactRouteTest {
 
         val status = call.response.status()?.value
 
-        assertTrue { call.requestHandled }
         assertEquals(200,status)
 
     }
@@ -144,7 +137,6 @@ class ContactRouteTest {
 
         val status = call.response.status()?.value
 
-        assertTrue { call.requestHandled }
         assertEquals(200,status)
 
     }
@@ -172,7 +164,6 @@ class ContactRouteTest {
 
         val status = call.response.status()?.value
 
-        assertTrue { call.requestHandled }
         assertEquals(200,status)
 
     }
@@ -198,7 +189,6 @@ class ContactRouteTest {
 
         val status = call.response.status()?.value
 
-        assertTrue{ call.requestHandled }
         assertEquals(400,status)
 
     }
@@ -224,7 +214,6 @@ class ContactRouteTest {
 
         val status = call.response.status()?.value
 
-        assertTrue{ call.requestHandled }
         assertEquals(400,status)
 
     }

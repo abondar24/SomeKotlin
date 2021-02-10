@@ -11,7 +11,6 @@ import org.kodein.di.instance
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-//TODO: refactor data generation
 class UserServiceTest {
 
     private val  userService by serviceDI.instance<UserService>()
@@ -29,23 +28,27 @@ class UserServiceTest {
     @Test
     fun getUserByIdTest(){
         initTestDB()
-        val user = User(0,"test","test")
-        val usr = userService.createUser(user).toUser()
+        val id = createUser()
+        val res = userService.getUserById(id)
 
-        val res = userService.getUserById(usr.id)
-
-        assertEquals(usr.id,res.id)
+        assertEquals(id,res.id)
     }
 
     @Test
     fun deleteTest(){
         initTestDB()
-        val user = User(0,"test","test")
-        var usr = userService.createUser(user).toUser()
-        usr = userService.getUserById(usr.id)
+        val id = createUser()
 
-        userService.deleteUser(usr.id)
-        assertThrows<EntityNotFoundException> { userService.getUserById(usr.id) }
+        userService.deleteUser(id)
+        assertThrows<EntityNotFoundException> { userService.getUserById(id) }
 
     }
+
+    private fun createUser():Int {
+        val user = User(0,"test","test")
+        val usr = userService.createUser(user).toUser()
+
+        return usr.id
+    }
+
 }

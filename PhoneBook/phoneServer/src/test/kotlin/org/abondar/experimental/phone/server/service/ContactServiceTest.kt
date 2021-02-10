@@ -12,7 +12,7 @@ import org.kodein.di.instance
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-//TODO: refactor data generation
+
 class ContactServiceTest {
     private val contactService by serviceDI.instance<ContactService>()
     private val userService by serviceDI.instance<UserService>()
@@ -21,11 +21,10 @@ class ContactServiceTest {
     @Test
     fun createContactTest(){
         initTestDB()
-        val user = User(0,"test","test")
-        val usr = userService.createUser(user).toUser()
+        val id = createUser()
 
         val contact = Contact(0,"test","test","test","")
-        val res = contactService.createContact(contact,usr.id).toContact()
+        val res = contactService.createContact(contact,id).toContact()
 
         assertTrue {res.id>0}
     }
@@ -42,42 +41,33 @@ class ContactServiceTest {
     @Test
     fun getContactTest(){
         initTestDB()
-        val user = User(0,"test","test")
-        val usr = userService.createUser(user).toUser()
+        val usrId = createUser()
+        val ctId = createContact(usrId)
 
-        val contact = Contact(0,"test","test","test","")
-        val ct = contactService.createContact(contact,usr.id).toContact()
-
-        val res = contactService.getContactById(ct.id)
-        assertEquals(ct.id,res.id)
+        val res = contactService.getContactById(ctId)
+        assertEquals(ctId,res.id)
 
     }
 
     @Test
     fun deleteContactTest(){
         initTestDB()
-        val user = User(0,"test","test")
-        val usr = userService.createUser(user).toUser()
+        val usrId = createUser()
+        val ctId = createContact(usrId)
 
-        val contact = Contact(0,"test","test","test","")
-        val ct = contactService.createContact(contact,usr.id).toContact()
+        contactService.deleteContact(ctId)
 
-        contactService.deleteContact(ct.id)
-
-        assertThrows<EntityNotFoundException> { contactService.getContactById(ct.id) }
+        assertThrows<EntityNotFoundException> { contactService.getContactById(ctId) }
 
     }
 
     @Test
     fun updateContactTest(){
         initTestDB()
-        val user = User(0,"test","test")
-        val usr = userService.createUser(user).toUser()
+        val usrId = createUser()
+        val ctId = createContact(usrId)
 
-        val contact = Contact(0,"test","test","test","")
-        val ct = contactService.createContact(contact,usr.id).toContact()
-
-        val upd = Contact(ct.id,ct.firstName,ct.lastName,ct.phone,"email")
+        val upd = Contact(ctId,"test","test","test","email")
         contactService.updateContact(upd)
 
         val res = contactService.getContactById(upd.id)
@@ -89,22 +79,17 @@ class ContactServiceTest {
     @Test
     fun updateMergeContactTest(){
         initTestDB()
-        val user = User(0,"test","test")
-        val usr = userService.createUser(user).toUser()
+        val usrId = createUser()
+        val ctId = createContact(usrId)
+        val ctId1 = createContact(usrId)
 
-        val contact = Contact(0,"test","test","test","")
-        val ct = contactService.createContact(contact,usr.id).toContact()
-
-        val contact1 = Contact(0,"test","test","test","")
-        val ct1 = contactService.createContact(contact1,usr.id).toContact()
-
-        val upd = Contact(ct.id,ct.firstName,ct.lastName,ct.phone,"email")
-        contactService.updateAndMergedContacts(upd, listOf(ct1.id))
+        val upd = Contact(ctId,"test","test","test","email")
+        contactService.updateAndMergedContacts(upd, listOf(ctId1))
 
         val res = contactService.getContactById(upd.id)
         assertEquals(upd.email,res.email)
 
-        assertThrows<EntityNotFoundException> { contactService.getContactById(ct1.id) }
+        assertThrows<EntityNotFoundException> { contactService.getContactById(ctId1) }
     }
 
     @Test
@@ -120,5 +105,22 @@ class ContactServiceTest {
         assertThrows<EntityNotFoundException> { userService.getUserById(usr.id) }
         assertThrows<EntityNotFoundException> { contactService.getContactById(ct.id) }
 
+    }
+
+
+    private fun createUser():Int {
+        val user = User(0,"test","test")
+        val usr = userService.createUser(user).toUser()
+
+        return usr.id
+    }
+
+
+    fun createContact(userId: Int):Int{
+
+        val contact = Contact(0,"test","test","test","")
+        val res = contactService.createContact(contact,userId).toContact()
+
+        return res.id
     }
 }
