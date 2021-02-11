@@ -8,6 +8,7 @@ import org.abondar.experimental.phone.server.org.abondar.experimental.phone.serv
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
 import org.junit.jupiter.api.assertThrows
 import org.kodein.di.instance
+import org.mindrot.jbcrypt.BCrypt
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
@@ -42,6 +43,18 @@ class UserServiceTest {
         userService.deleteUser(id)
         assertThrows<EntityNotFoundException> { userService.getUserById(id) }
 
+    }
+
+    @Test
+    fun updatePasswordTest(){
+        initTestDB()
+        val id = createUser()
+
+        val user = User(id,"test","test1")
+        userService.updatePassword(user)
+
+        val res = userService.getUserById(id)
+        assertTrue { BCrypt.checkpw(user.password, res.password) }
     }
 
     private fun createUser():Int {

@@ -31,4 +31,10 @@ fun Route.users(){
         userService.deleteUser(userId)
         call.respond(HttpStatusCode.OK)
     }
+
+    put("user"){
+        val userReq = call.receive<User>()
+        userService.updatePassword(userReq)
+        call.respond(HttpStatusCode.OK)
+    }
 }

@@ -22,4 +22,9 @@ class UserService {
         UserEntity[id].delete()
     }
 
+    fun updatePassword(user: User) = transaction {
+        val usr = UserEntity[user.id]
+        usr.password = BCrypt.hashpw(user.password,BCrypt.gensalt())
+    }
+
 }

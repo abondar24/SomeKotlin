@@ -13,7 +13,6 @@ import org.abondar.experimental.phone.server.appModule
 
 
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class UserRouteTest {
 
@@ -109,6 +108,29 @@ class UserRouteTest {
 
         val status = call.response.status()?.value
 
+
+        assertEquals(200,status)
+
+    }
+
+
+    @KtorExperimentalAPI
+    @Test
+    fun updateUserTest() = withTestApplication({
+        appModule(true)
+    }) {
+
+        val gson = Gson()
+        val id = createUser(gson)
+
+        val upd = User(id,"test","test1")
+        val body =  gson.toJson(upd)
+        val call= handleRequest(HttpMethod.Put, "/user") {
+            addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+            setBody(body)
+        }
+
+        val status = call.response.status()?.value
 
         assertEquals(200,status)
 
