@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.kodein.di.instance
 import org.kodein.di.newInstance
-import kotlin.test.assertFalse
+import javax.naming.AuthenticationException
 import kotlin.test.assertTrue
 
 class LoginServiceTest {
@@ -25,8 +25,8 @@ class LoginServiceTest {
         user = userService.createUser(user).toUser()
         val usr = User(user.id,username = user.username,"test")
 
-        val res = loginService.verifyUser(usr)
-        assertTrue { res }
+        val res = loginService.loginUser(usr)
+        assertTrue { res.isNotEmpty() }
     }
 
     @Test
@@ -43,8 +43,7 @@ class LoginServiceTest {
         user = userService.createUser(user).toUser()
 
         val usr = User(user.id,username = user.username,"newPass")
-        val res = loginService.verifyUser(usr)
+        assertThrows<AuthenticationException> { loginService.loginUser(usr) }
 
-        assertFalse { res }
     }
 }

@@ -12,20 +12,20 @@ import javax.naming.AuthenticationException
 
 class LoginService(private val userService: UserService) {
 
-    fun loginUser(user: User): String{
-          if (!verifyUser(user)){
-              throw AuthenticationException("Wrong credentials")
-         }
+    fun loginUser(user: User): String {
+        if (!verifyUser(user)) {
+            throw AuthenticationException("Wrong credentials")
+        }
 
         return generateToken(user)
     }
 
-    fun verifyUser(user: User): Boolean{
+    private fun verifyUser(user: User): Boolean {
         val res = userService.getUserById(user.id)
-       return BCrypt.checkpw(user.password,res.password)
+        return BCrypt.checkpw(user.password, res.password)
     }
 
-    fun logoutUser(userId: Int){
+    fun logoutUser(userId: Int) {
         userService.getUserById(userId)
     }
 
