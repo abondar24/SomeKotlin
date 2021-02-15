@@ -39,14 +39,13 @@ fun main(args: Array<String>): Unit  = io.ktor.server.netty.EngineMain.main(args
 @JvmOverloads
 fun Application.appModule(testing: Boolean = false){
 
-    jwtIssuer = environment.config.property("jwt.domain").getString()
-    jwtAudience = environment.config.property("jwt.audience").getString()
-    jwtRealm = environment.config.property("jwt.realm").getString()
-
     if (testing){
         initTestDB()
     } else {
         initDB()
+        jwtIssuer = environment.config.property("jwt.domain").getString()
+        jwtAudience = environment.config.property("jwt.audience").getString()
+        jwtRealm = environment.config.property("jwt.realm").getString()
 
     }
 
@@ -88,10 +87,11 @@ fun Application.appModule(testing: Boolean = false){
     install(Authentication){
         jwt ("jwt"){
             verifier(AuthConfig.verifier)
-            val jwtIssuer = environment.config.property("jwt.domain").getString()
             skipWhen { call -> call.sessions.get<LoginSession>() != null }
             skipWhen { call -> call.request.header(jwtHeader) != null }
             skipWhen { call -> call.request.path() == loginPath }
+            skipWhen { call -> call.request.path() == "/user" }
+            skipWhen { testing }
 
             validate { credential ->
                 if (credential.payload.audience.contains(jwtAudience)) JWTPrincipal(credential.payload) else null
