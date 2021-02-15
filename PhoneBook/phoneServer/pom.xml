@@ -73,6 +73,21 @@
             <version>${ktor.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.ktor</groupId>
+            <artifactId>ktor-server-sessions</artifactId>
+            <version>${ktor.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ktor</groupId>
+            <artifactId>ktor-auth</artifactId>
+            <version>${ktor.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ktor</groupId>
+            <artifactId>ktor-auth-jwt</artifactId>
+            <version>${ktor.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.kodein.di</groupId>
             <artifactId>kodein-di</artifactId>
             <version>${kodein.version}</version>

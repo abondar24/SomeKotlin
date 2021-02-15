@@ -1,6 +1,7 @@
 package org.abondar.experimental.phone.server.service
 
 import org.abondar.experimental.phone.server.conf.initTestDB
+import org.abondar.experimental.phone.server.conf.serviceDI
 import org.abondar.experimental.phone.server.model.User
 import org.abondar.experimental.phone.server.org.abondar.experimental.phone.server.service.LoginService
 import org.abondar.experimental.phone.server.org.abondar.experimental.phone.server.service.UserService
@@ -18,31 +19,31 @@ class LoginServiceTest {
     private val  loginService by serviceDI.newInstance { LoginService(instance()) }
 
     @Test
-    fun loginServiceTest(){
+    fun verifyUserTest(){
         initTestDB()
         var user = User(0,"test","test")
         user = userService.createUser(user).toUser()
         val usr = User(user.id,username = user.username,"test")
 
-        val res = loginService.loginUser(usr)
+        val res = loginService.verifyUser(usr)
         assertTrue { res }
     }
 
     @Test
-    fun loginServiceUserNotFoundTest(){
+    fun verifyUserNotFoundTest(){
         initTestDB()
         val user = User(0,"test","test")
         assertThrows<EntityNotFoundException> { loginService.loginUser(user) }
     }
 
     @Test
-    fun loginServicePasswordNotMatchesTest(){
+    fun verifyUserPasswordNotMatchesTest(){
         initTestDB()
         var user = User(0,"test","test")
         user = userService.createUser(user).toUser()
 
         val usr = User(user.id,username = user.username,"newPass")
-        val res = loginService.loginUser(usr)
+        val res = loginService.verifyUser(usr)
 
         assertFalse { res }
     }
