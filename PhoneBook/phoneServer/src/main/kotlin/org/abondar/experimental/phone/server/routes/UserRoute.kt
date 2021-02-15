@@ -8,7 +8,7 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import org.abondar.experimental.phone.server.model.User
 import org.abondar.experimental.phone.server.org.abondar.experimental.phone.server.service.UserService
-import org.abondar.experimental.phone.server.service.serviceDI
+import org.abondar.experimental.phone.server.conf.serviceDI
 import org.kodein.di.instance
 
 fun Route.users(){

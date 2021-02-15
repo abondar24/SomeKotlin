@@ -1,4 +1,4 @@
-package org.abondar.experimental.phone.server.service
+package org.abondar.experimental.phone.server.conf
 
 import org.abondar.experimental.phone.server.org.abondar.experimental.phone.server.service.ContactService
 import org.abondar.experimental.phone.server.org.abondar.experimental.phone.server.service.LoginService

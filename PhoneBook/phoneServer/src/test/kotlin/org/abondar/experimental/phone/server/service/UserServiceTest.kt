@@ -3,6 +3,7 @@ package org.abondar.experimental.phone.server.service
 
 import org.junit.jupiter.api.Test
 import org.abondar.experimental.phone.server.conf.initTestDB
+import org.abondar.experimental.phone.server.conf.serviceDI
 import org.abondar.experimental.phone.server.model.User
 import org.abondar.experimental.phone.server.org.abondar.experimental.phone.server.service.UserService
 import org.jetbrains.exposed.dao.exceptions.EntityNotFoundException
