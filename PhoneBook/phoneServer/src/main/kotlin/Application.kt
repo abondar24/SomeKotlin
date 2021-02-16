@@ -43,9 +43,9 @@ fun Application.appModule(testing: Boolean = false){
         initTestDB()
     } else {
         initDB()
-        jwtIssuer = environment.config.property("jwt.domain").getString()
-        jwtAudience = environment.config.property("jwt.audience").getString()
-        jwtRealm = environment.config.property("jwt.realm").getString()
+        jwtIssuer = environment.config.property("ktor.jwt.domain").getString()
+        jwtAudience = environment.config.property("ktor.jwt.audience").getString()
+        jwtRealm = environment.config.property("ktor.jwt.realm").getString()
 
     }
 
@@ -88,9 +88,8 @@ fun Application.appModule(testing: Boolean = false){
         jwt ("jwt"){
             verifier(AuthConfig.verifier)
             skipWhen { call -> call.sessions.get<LoginSession>() != null }
-            skipWhen { call -> call.request.header(jwtHeader) != null }
             skipWhen { call -> call.request.path() == loginPath }
-            skipWhen { call -> call.request.path() == "/user" }
+            skipWhen { call -> call.request.path() == "/user" && call.request.httpMethod== HttpMethod.Post}
             skipWhen { testing }
 
             validate { credential ->
