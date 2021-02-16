@@ -76,7 +76,7 @@ fun Application.appModule(testing: Boolean = false){
        }
 
        exception<AuthenticationException>{
-           call.respond(HttpStatusCode.Unauthorized)
+           call.respond(HttpStatusCode.Forbidden)
        }
    }
 

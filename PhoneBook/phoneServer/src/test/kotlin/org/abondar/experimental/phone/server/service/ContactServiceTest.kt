@@ -117,7 +117,7 @@ class ContactServiceTest {
     }
 
 
-    fun createContact(userId: Int):Int{
+    private fun createContact(userId: Int):Int{
 
         val contact = Contact(0,"test","test","test","")
         val res = contactService.createContact(contact,userId).toContact()
