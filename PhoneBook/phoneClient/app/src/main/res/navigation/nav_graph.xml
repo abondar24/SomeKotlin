@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/EnterFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/EnterFragment"
         android:name="org.abondar.experimental.phoneclient.EnterFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/enter_fragment_label"
         tools:layout="@layout/enter_fragment">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/LoginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="org.abondar.experimental.phoneclient.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/LoginFragment"
+        android:name="org.abondar.experimental.phoneclient.LoginFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/login_fragment">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_EnterFragment_To_LoginFragment"
+            app:destination="@id/EnterFragment" />
     </fragment>
 </navigation>
