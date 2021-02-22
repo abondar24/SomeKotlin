@@ -12,7 +12,7 @@
         tools:layout="@layout/enter_fragment">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_EnterFragment_To_LoginFragment"
             app:destination="@id/LoginFragment" />
     </fragment>
     <fragment
@@ -22,7 +22,7 @@
         tools:layout="@layout/login_fragment">
 
         <action
-            android:id="@+id/action_EnterFragment_To_LoginFragment"
+            android:id="@+id/action_LoginFragment_To_EnterFragment"
             app:destination="@id/EnterFragment" />
     </fragment>
 </navigation>

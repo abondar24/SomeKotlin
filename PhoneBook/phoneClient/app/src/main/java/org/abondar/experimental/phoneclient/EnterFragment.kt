@@ -24,8 +24,8 @@ class EnterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_signup).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        view.findViewById<Button>(R.id.button_login).setOnClickListener {
+            findNavController().navigate(R.id.action_EnterFragment_To_LoginFragment)
         }
     }
 }
