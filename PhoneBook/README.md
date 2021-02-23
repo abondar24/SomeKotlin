@@ -1,6 +1,6 @@
-# Phone Book Server
+# Phone Book
 
-Backend of phone book application
+Small phone book application
 
 ## Build and run
 
